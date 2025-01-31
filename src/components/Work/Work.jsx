@@ -69,10 +69,10 @@ const Work = () => {
         <div className="about_section_main text-center">
           <div className="about_section">
             <div className="about_us_word overflow-hidden">
-              <p className="overflow-hidden take_tour">Take a tour of</p>
+              <p className="overflow-hidden take_tour"><strong>Take a tour of</strong></p>
             </div>
             <div className="about_us_word overflow-hidden">
-              <p className="overflow-hidden take_tour">our creations</p>
+              <p className="overflow-hidden take_tour"><strong>our creations</strong></p>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@ const Work = () => {
       {/*-----LOGO---SECTION---START------*/}
 
       <section className="wrapper">
-        <h2 className="uppercase text-4xl text-center md:text-start mt-5">
+        <h2 className="uppercase text-4xl text-center md:text-start mt-5 font-bold">
           LOGO
         </h2>
         {/* <div className="logo_section">
@@ -178,7 +178,7 @@ const Work = () => {
       {/*------PROJECT---IMAGES---STARTED------*/}
 
       <section className="wrapper">
-        <h2 className="uppercase text-2xl md:text-4xl mt-10">3d work</h2>
+        <h2 className="uppercase text-2xl md:text-4xl mt-10 font-bold">3d work</h2>
         <div className="projects_main mt-4">
           <SlideshowLightbox className="projects">
             <img
@@ -258,7 +258,7 @@ const Work = () => {
       {/*-----BROCHURES---START------*/}
 
       <section className="wrapper">
-        <h2 className="uppercase text-4xl text-center md:text-start mt-5">
+        <h2 className="uppercase text-4xl text-center md:text-start mt-5 font-bold">
           Brohures
         </h2>
         <div className="row md:flex items-center justify-center gap-3">
@@ -297,7 +297,7 @@ const Work = () => {
       {/*-----WEBSITES---START------*/}
 
       <section className="wrapper">
-        <h2 className="uppercase text-4xl text-center md:text-start mt-15">
+        <h2 className="uppercase text-4xl text-center md:text-start mt-15 font-bold">
           Websites
         </h2>
         <div className="row md:flex items-center justify-center gap-3">

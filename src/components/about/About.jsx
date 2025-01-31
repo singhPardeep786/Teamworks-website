@@ -100,20 +100,20 @@ const About = () => {
         <div className="about_section_main text-center">
           <div className="about_section">
             <div ref={aboutUsRef} className="about_us_word overflow-hidden" style={{opacity: 0}}>
-              <p className="overflow-hidden">For a new media company we are pretty old.</p>
+              <p className="overflow-hidden"><strong>For a new media company we are pretty old.</strong></p>
             </div>
             <div ref={aboutUsRef} className="about_us_word overflow-hidden" style={{opacity: 0}}>
               <p className="overflow-hidden">
-                We were amongst the pioneers in this space and we're ranked
-                amongst the most stable, dependable and successful ones.
+                <strong>We were amongst the pioneers in this space and we're ranked
+                amongst the most stable, dependable and successful ones.</strong>
               </p>
             </div>
             <div ref={aboutUsRef} className="about_us_word overflow-hidden" style={{opacity: 0}}>
               <p className="overflow-hidden">
-                This is a reputation built through servicing the requirements of
+                <strong>This is a reputation built through servicing the requirements of
                 over 200 customers, both big and small from various industry
                 verticals, a major proportion of whom are regular, repeat
-                clientele.
+                clientele.</strong>
               </p>
             </div>
           </div>

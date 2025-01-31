@@ -449,7 +449,7 @@ body {
  }
 
  .about_section p {
-    font-size: 1.23rem;
+    font-size: 1.19rem;
     /* font-family: 'futura'; */
     text-transform: uppercase;
     font-weight: bold;
@@ -642,6 +642,7 @@ body {
     margin: auto;
     object-fit: cover;
     transition: transform 0.4s ease;
+    border-radius: 1rem;
 }
 
 .logo_box:hover img {
