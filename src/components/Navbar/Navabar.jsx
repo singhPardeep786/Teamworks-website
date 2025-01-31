@@ -72,10 +72,10 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:block">
           <ul className="flex space-x-6">
-            <li><AnimatedLink to="/" onClick={() => { window.scrollTo(0, 0); navigate('/'); }} className="text-zinc-800">Home</AnimatedLink></li>
-            <li><AnimatedLink to="/about" onClick={() => { window.scrollTo(0, 0); navigate('/about'); }} className="text-zinc-800">About</AnimatedLink></li>
-            <li><AnimatedLink to="/work" onClick={() => { window.scrollTo(0, 0); navigate('/work'); }} className="text-zinc-800">Work</AnimatedLink></li>
-            <li><AnimatedLink to="/contact" onClick={() => { window.scrollTo(0, 0); navigate('/contact'); }} className="text-zinc-800">Contact</AnimatedLink></li>
+            <li className="overflow-hidden"><AnimatedLink to="/" onClick={() => { window.scrollTo(0, 0); navigate('/'); }} className="text-zinc-800">Home</AnimatedLink></li>
+            <li className="overflow-hidden"><AnimatedLink to="/about" onClick={() => { window.scrollTo(0, 0); navigate('/about'); }} className="text-zinc-800">About</AnimatedLink></li>
+            <li className="overflow-hidden"><AnimatedLink to="/work" onClick={() => { window.scrollTo(0, 0); navigate('/work'); }} className="text-zinc-800">Work</AnimatedLink></li>
+            <li className="overflow-hidden"><AnimatedLink to="/contact" onClick={() => { window.scrollTo(0, 0); navigate('/contact'); }} className="text-zinc-800">Contact</AnimatedLink></li>
           </ul>
         </nav>
 
