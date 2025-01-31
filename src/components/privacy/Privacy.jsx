@@ -82,7 +82,7 @@ const Privacy = () => {
               </p>
               
               <p className="mt-4 leading-relaxed">
-                For more information or to request access to your personal information, please <Link to="/contact" onClick={() => { navigate('/contact', { replace: true }); window.scrollTo(0, 0); }} className="text-blue-600 font-medium hover:underline">contact us</Link>.
+                For more information or to request access to your personal information, please <Link to="/contact" onClick={() => { navigate('/contact', { replace: true }); window.scrollTo(0, 0); }} className="text-blue-600 font-bold hover:underline capitalize">contact us</Link>.
               </p>
             </div>
           </div>
