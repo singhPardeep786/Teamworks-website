@@ -162,6 +162,8 @@ const Work = () => {
               "/images/soubhagya_logo.png",
               "/images/veekay_logo.png",
               "/images/forest_edge_logo.png",
+              "/images/anvita_preserve_logo.png",
+              "/images/nature_valley_logo.png",
             ].map((src, index) => (
               <div className="logo_box" key={index}>
                 <img src={src} alt="Company Logo" />
