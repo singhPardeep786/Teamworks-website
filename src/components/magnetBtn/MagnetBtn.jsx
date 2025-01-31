@@ -55,7 +55,7 @@ const MagnetBtn = () => {
     if (isFromLeft) {
       gsap.fromTo(
         bg,
-        { x: "-200%", y: direction.y, borderRadius: "0%" },
+        { x: "-200%", y: direction.y, borderRadius: "50%" },
         { x: "0%", y: "0%", borderRadius: "50%", duration: 0.5, ease: "power2.out" } // Smooth transition duration and easing
       );
       gsap.fromTo(
@@ -66,7 +66,7 @@ const MagnetBtn = () => {
     } else if (isFromRight) {
       gsap.fromTo(
         bg,
-        { x: "200%", y: direction.y, borderRadius: "0%" },
+        { x: "200%", y: direction.y, borderRadius: "50%" },
         { x: "0%", y: "0%", borderRadius: "50%", duration: 0.5, ease: "power2.out" } // Smooth transition duration and easing
       );
       gsap.fromTo(
