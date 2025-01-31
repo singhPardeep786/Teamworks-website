@@ -143,7 +143,7 @@ const ContactForm = () => {
                 {...register("message", { required: true })}
                 placeholder="Please describe your project..."
                 ref={(el) => (formElementsRef.current[3] = el)}
-                className="w-full p-3 border-b focus:outline-none focus:border-gray-700 h-28"
+                className="w-full p-3 border-b focus:outline-none focus:border-gray-700 h-28 resize-none"
               />
               {errors.message && (
                 <span className="text-red-500 text-sm">
