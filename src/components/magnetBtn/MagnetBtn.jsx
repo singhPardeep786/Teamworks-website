@@ -17,7 +17,7 @@ const MagnetBtn = () => {
     gsap.to(buttonRef.current, {
       x: x * 0.2, // Adjust the strength of the magnet
       y: y * 0.2,
-      duration: 0.5, // Smooth transition duration
+      duration: 0.5,
       ease: "power2.out",
     });
 
@@ -25,7 +25,7 @@ const MagnetBtn = () => {
     gsap.to(textRef.current, {
       x: -x * 0.1, // Move in the opposite direction
       y: -y * 0.1,
-      duration: 0.5, // Smooth transition duration
+      duration: 0.5,
       ease: "power2.out",
     });
   };
@@ -56,34 +56,34 @@ const MagnetBtn = () => {
       gsap.fromTo(
         bg,
         { x: "-200%", y: direction.y, borderRadius: "50%" },
-        { x: "0%", y: "0%", borderRadius: "50%", duration: 0.5, ease: "power2.out" } // Smooth transition duration and easing
+        { x: "0%", y: "0%", borderRadius: "50%", duration: 0.5, ease: "power2.out" }
       );
       gsap.fromTo(
         textRef.current,
         { x: 0, y: 0 },
-        { x: 0, y: "0%", duration: 0.5, ease: "power2.out" } // Smooth transition duration and easing
+        { x: 0, y: "0%", duration: 0.5, ease: "power2.out" }
       );
     } else if (isFromRight) {
       gsap.fromTo(
         bg,
         { x: "200%", y: direction.y, borderRadius: "50%" },
-        { x: "0%", y: "0%", borderRadius: "50%", duration: 0.5, ease: "power2.out" } // Smooth transition duration and easing
+        { x: "0%", y: "0%", borderRadius: "50%", duration: 0.5, ease: "power2.out" }
       );
       gsap.fromTo(
         textRef.current,
         { x: 0, y: 0 },
-        { x: 0, y: "0%", duration: 0.5, ease: "power2.out" } // Smooth transition duration and easing
+        { x: 0, y: "0%", duration: 0.5, ease: "power2.out" }
       );
     } else {
       gsap.fromTo(
         bg,
-        { x: direction.x, y: direction.y, borderRadius: "0%" },
-        { x: "0%", y: "0%", borderRadius: "50%", duration: 0.5, ease: "power2.out" } // Smooth transition duration and easing
+        { x: direction.x, y: direction.y, borderRadius: "50%" },
+        { x: "0%", y: "0%", borderRadius: "50%", duration: 0.5, ease: "power2.out" }
       );
       gsap.fromTo(
         textRef.current,
         { x: -direction.x, y: -direction.y },
-        { x: "0%", y: "0%", duration: 0.5, ease: "power2.out" } // Smooth transition duration and easing
+        { x: "0%", y: "0%", duration: 0.5, ease: "power2.out" }
       );
     }
   };
@@ -110,43 +110,43 @@ const MagnetBtn = () => {
     else direction = { x: "100%", y: "0%" }; // Right
 
     // Reset magnet effect smoothly
-    gsap.to(buttonRef.current, { x: 0, y: 0, duration: 0.5, ease: "power2.out" }); // Smooth transition duration and easing
+    gsap.to(buttonRef.current, { x: 0, y: 0, duration: 0.5, ease: "power2.out" });
 
     // Reset text position smoothly
-    gsap.to(textRef.current, { x: 0, y: 0, duration: 0.5, ease: "power2.out" }); // Smooth transition duration and easing
+    gsap.to(textRef.current, { x: 0, y: 0, duration: 0.5, ease: "power2.out" });
 
     // Animate the background leaving smoothly
     if (isFromLeft) {
       gsap.to(bg, {
         x: "-100%",
         y: "0%",
-        borderRadius: "0%",
-        duration: 0.5, // Smooth transition duration
-        ease: "power2.in", // Smooth easing
+        borderRadius: "50%",
+        duration: 0.5,
+        ease: "power2.in",
       });
     } else if (isFromRight) {
       gsap.to(bg, {
         x: "100%",
         y: "0%",
-        borderRadius: "0%",
-        duration: 0.5, // Smooth transition duration
-        ease: "power2.in", // Smooth easing
+        borderRadius: "50%",
+        duration: 0.5, 
+        ease: "power2.in",
       });
     } else if (isFromTop) {
       gsap.to(bg, {
         x: "0%",
         y: "-100%",
-        borderRadius: "0%",
-        duration: 0.5, // Smooth transition duration
-        ease: "power2.in", // Smooth easing
+        borderRadius: "50%",
+        duration: 0.5, 
+        ease: "power2.in",
       });
     } else if (isFromBottom) {
       gsap.to(bg, {
         x: "0%",
         y: "100%",
-        borderRadius: "0%",
-        duration: 0.5, // Smooth transition duration
-        ease: "power2.in", // Smooth easing
+        borderRadius: "50%",
+        duration: 0.5, 
+        ease: "power2.in",
       });
     }
   };
