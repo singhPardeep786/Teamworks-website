@@ -87,10 +87,10 @@ const Contact = () => {
           {
             from_name: formData.name, // Corrected to use 'from_name' as per emailjs template
             from_email: formData.email, // 'from_email' corresponds to the email address of the sender
-            phone: `${formData.phone}`, // 'phone' is the phone number
-            message: formData.project, // Added 'message' field to send textarea content
-            to_email: "pardeep90191170@gmail.com", // Admin email
             to_name: "Pardeep",
+            to_email: "rranger098@gmail.com", // Admin email
+            phone: `Phone Number: ${formData.phone}`, // 'phone' is the phone number
+            message: formData.project, // Added 'message' field to send textarea content
           },
           "ZRjBAgKkrNRAnhVkO" // Replace with your actual Public Key
         )
