@@ -163,7 +163,7 @@ const Contact = () => {
               name="project"
               value={formData.project}
               onChange={handleChange}
-              className="border p-2 mb-2 rounded-2xl w-full h-24"
+              className="border p-2 mb-2 rounded-2xl w-full h-24 resize-none"
             ></textarea>
             {errors.project && (
               <p className="text-red-500 text-sm">{errors.project}</p>
