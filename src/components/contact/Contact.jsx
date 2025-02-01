@@ -1,11 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
+import emailjs from "emailjs-com";
 import { gsap } from "gsap";
-import { useForm } from "react-hook-form";
 
-const ContactForm = () => {
-  const formRef = useRef(null);
-  const titleRef = useRef(null);
-  const formElementsRef = useRef([]);
+const Contact = () => {
 
   const leftOverlayRef = useRef(null);
 
@@ -36,45 +33,79 @@ const ContactForm = () => {
       },
     });
   }, []);
+  
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    project: "",
+  });
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
+  const [errors, setErrors] = useState({});
+  const formRef = useRef(null);
 
-  const onSubmit = (data) => {
-    console.log(data);
-    reset(); // Clear form after submission
+  const validate = () => {
+    let newErrors = {};
+
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+    } else if (formData.name.length < 3) {
+      newErrors.name = "Name must be at least 3 characters";
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Enter a valid email";
+    }
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Phone number is required";
+    } else if (!/^\d{10}$/.test(formData.phone)) {
+      newErrors.phone = "Enter a valid 10-digit phone number";
+    }
+
+    if (!formData.project.trim()) {
+      newErrors.project = "Project description is required";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
-  useEffect(() => {
-    gsap.fromTo(
-      titleRef.current,
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 1, ease: "power3.out" }
-    );
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-    gsap.fromTo(
-      formRef.current,
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 1, ease: "power3.out", delay: 0.5 }
-    );
-
-    gsap.fromTo(
-      formElementsRef.current,
-      { opacity: 0, y: 15 },
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.05,
-        duration: 0.8,
-        ease: "power3.out",
-        delay: 1,
-      }
-    );
-  }, []);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (validate()) {
+      emailjs
+        .send(
+          "service_nzb32uc", // Service ID
+          "template_2rzh2kk", // Template ID
+          {
+            from_name: formData.name, // Corrected to use 'from_name' as per emailjs template
+            from_email: formData.email, // 'from_email' corresponds to the email address of the sender
+            phone: `${formData.phone}`, // 'phone' is the phone number
+            message: formData.project, // Added 'message' field to send textarea content
+            to_email: "pardeep90191170@gmail.com", // Admin email
+            to_name: "Pardeep",
+          },
+          "ZRjBAgKkrNRAnhVkO" // Replace with your actual Public Key
+        )
+        .then(
+          (response) => {
+            alert("Thank you for reaching out. We will get back to you soon!");
+            setFormData({ name: "", email: "", phone: "", project: "" });
+            setErrors({});
+          },
+          (error) => {
+            alert("Failed to send email. Please try again.");
+          }
+        );
+    }
+  };
 
   return (
     <>
@@ -83,93 +114,74 @@ const ContactForm = () => {
         className="fixed top-0 left-0 w-full h-full overlay_color z-[99]"
         style={{ transformOrigin: "bottom" }}
       />
-      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
-        <h6
-          ref={titleRef}
-          className="uppercase text-4xl font-bold text-gray-800 mb-8"
-        >
-          Let's work together
-        </h6>
+      <div className="flex justify-center items-center flex-col min-h-screen bg-gray-100">
+        <h6 className="uppercase text-4xl font-bold text-gray-800 mb-8 contact_title"> Let's work together</h6>
+        <div className="bg-white shadow-md rounded-4xl p-6 flex flex-col items-center md:flex-row w-[80%] md:w-[40%]">
+          <form
+            ref={formRef}
+            onSubmit={handleSubmit}
+            className="flex flex-col flex-1 p-4"
+          >
+            <label className="mb-1">Enter your name</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className="border p-2 mb-2 rounded-2xl w-full"
+            />
+            {errors.name && (
+              <p className="text-red-500 text-sm">{errors.name}</p>
+            )}
 
-        <div
-          ref={formRef}
-          className="bg-white rounded-3xl shadow-lg p-6 md:p-8 flex flex-col md:flex-row items-center max-w-3xl w-full"
-        >
-          {/* Left Section - Form */}
-          <div className="flex-1 w-full">
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-              <input
-                type="text"
-                {...register("name", { required: true })}
-                placeholder="Enter your name"
-                ref={(el) => (formElementsRef.current[0] = el)}
-                className="w-full p-3 border-b focus:outline-none focus:border-gray-700"
-              />
-              {errors.name && (
-                <span className="text-red-500 text-sm">Name is required.</span>
-              )}
+            <label className="mb-1">Enter your email</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="border p-2 mb-2 rounded-2xl w-full"
+            />
+            {errors.email && (
+              <p className="text-red-500 text-sm">{errors.email}</p>
+            )}
 
-              <input
-                type="email"
-                {...register("email", { required: true })}
-                placeholder="Enter your email"
-                ref={(el) => (formElementsRef.current[1] = el)}
-                className="w-full p-3 border-b focus:outline-none focus:border-gray-700"
-              />
-              {errors.email && (
-                <span className="text-red-500 text-sm">
-                  Valid email required.
-                </span>
-              )}
+            <label className="mb-1">Enter your phone number</label>
+            <input
+              type="number"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              className="border p-2 mb-2 rounded-2xl w-full"
+            />
+            {errors.phone && (
+              <p className="text-red-500 text-sm">{errors.phone}</p>
+            )}
 
-              <input
-                type="tel"
-                {...register("phone", {
-                  required: true,
-                  pattern: /^\+?\d{10,13}$/,
-                })}
-                placeholder="Enter your phone number"
-                ref={(el) => (formElementsRef.current[2] = el)}
-                className="w-full p-3 border-b focus:outline-none focus:border-gray-700"
-              />
-              {errors.phone && (
-                <span className="text-red-500 text-sm">
-                  Valid phone number required.
-                </span>
-              )}
+            <label className="mb-1">What is it about?</label>
+            <textarea
+              name="project"
+              value={formData.project}
+              onChange={handleChange}
+              className="border p-2 mb-2 rounded-2xl w-full h-24"
+            ></textarea>
+            {errors.project && (
+              <p className="text-red-500 text-sm">{errors.project}</p>
+            )}
 
-              <p className="text-sm text-gray-700 mt-4">What is it about?</p>
-              <textarea
-                {...register("message", { required: true })}
-                placeholder="Please describe your project..."
-                ref={(el) => (formElementsRef.current[3] = el)}
-                className="w-full p-3 border-b focus:outline-none focus:border-gray-700 h-28 resize-none"
-              />
-              {errors.message && (
-                <span className="text-red-500 text-sm">
-                  Please describe your project.
-                </span>
-              )}
-
-              <button
-                type="submit"
-                ref={(el) => (formElementsRef.current[4] = el)}
-                className="w-full p-3 mt-4 rounded-2xl text-center cursor-pointer uppercase submit_button"
-              >
-                Submit
-              </button>
-            </form>
-          </div>
-
-          {/* Right Section - Image */}
-          <div className="hidden md:block flex-1 ml-8 relative">
-            <div className="w-full overflow-hidden rounded-3xl border border-gray-300 relative">
-              <img
-                src="images/sacramento_4.jpg"
-                alt="Contact Illustration"
-                className="object-cover w-full h-full"
-              />
-            </div>
+            <button
+              type="submit"
+              className="w-full p-3 mt-4 rounded-2xl text-center cursor-pointer uppercase submit_button"
+            >
+              SUBMIT
+            </button>
+          </form>
+          <div className="hidden md:block w-1/2 p-4">
+            <img
+              src="/images/sacramento_4.jpg"
+              alt="Garden View"
+              className="rounded-4xl w-full h-full object-cover"
+            />
           </div>
         </div>
       </div>
@@ -177,4 +189,4 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;
+export default Contact;

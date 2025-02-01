@@ -771,6 +771,7 @@ body {
 
  .submit_button:hover {
     color: var(--black);
+    background-color: var(--white);
  }
 
  .submit_button::after {
@@ -778,7 +779,7 @@ body {
     position: absolute;
     width: 300%;
     height: 700%;
-    background-color: var(--white);
+    background-color: var(--white)!important;
     border-radius: 50%;
     bottom: -700%;
     left: -100%;
