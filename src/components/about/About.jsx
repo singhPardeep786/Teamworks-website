@@ -133,7 +133,7 @@ const About = () => {
           <div className="col-6 mt-10">
             <div className="teamworks_img relative overflow-hidden">
               <div className="overlay2"></div>
-              <img src="/public/images/Teamworks.jpg" className="w-full rounded-4xl" alt="" />
+              <img src="/images/Teamworks.jpg" className="w-full rounded-4xl" alt="" />
             </div>
           </div>
           <div className="col-6 mt-10">
